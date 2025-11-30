@@ -4,12 +4,12 @@ import sys
 import base64
 
 if len(sys.argv) < 5:
-    print("Kullanım: python3 rc4.py <passphrase> <input_csv> <output_csv> <seperator>")
-    print("Base64 ile kodlanmış RC4 şifreli metinleri çözer.")
+    print("Usage: python3 rc4.py <passphrase> <input_csv> <output_csv> <seperator>")
+    print("Decodes Base64 encoded RC4 encrypted strings.")
     sys.exit(0)
 if sys.argv[1] == "--help" or sys.argv[1] == "-h":
-    print("Kullanım: python3 rc4.py <passphrase> <input_csv> <output_csv> <seperator>")
-    print("Base64 ile kodlanmış RC4 şifreli metinleri çözer.")
+    print("Usage: python3 rc4.py <passphrase> <input_csv> <output_csv> <seperator>")
+    print("Decodes Base64 encoded RC4 encrypted strings.")
     sys.exit(0)
 
 passphrase = sys.argv[1]
@@ -64,9 +64,9 @@ try:
 
                 writer.writerow([b64_ciphertext, plaintext])
 
-    print(f"Decrypted stringler {output_file}'a yazıldı.")
+    print(f"Decrypted strings written to: {output_file}")
 
 except FileNotFoundError:
-    print(f"Hata: '{ciphertext_file}' dosyası bulunamadı.")
+    print(f"Error: file '{ciphertext_file}' not found.")
 except Exception as e:
-    print(f"Bir hata oluştu: {e}")
+    print(f"Error: {e}")
