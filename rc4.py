@@ -16,7 +16,7 @@ passphrase = sys.argv[1]
 ciphertext_file = sys.argv[2]
 output_file = sys.argv[3]
 seperator = sys.argv[4]
-
+nullReplaceChar = "?"
 
 def fix_padding(b64_string):
     if not b64_string:
@@ -36,7 +36,7 @@ def decrypt_base64_rc4(passphrase, b64_ciphertext):
 
     try:
         plaintext = decrypted_bytes.decode("utf-8")
-        return plaintext.replace("\x00", "?")
+        return plaintext.replace("\x00", nullReplaceChar)
     except UnicodeDecodeError:
         plaintext = f"<Binary Data: {decrypted_bytes.hex()}>"
 
